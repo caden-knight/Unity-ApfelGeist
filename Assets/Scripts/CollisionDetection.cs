@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CollisionDetection : MonoBehaviour
 {
+    private int score = 0;
+    private int lives = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +21,18 @@ public class CollisionDetection : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.collider.CompareTag("Ground")) return;
+
+        if (other.collider.CompareTag("Player"))
+        {
+            if (lives > 0)
+            {
+                lives--;
+                print(lives);
+            }
+            else
+            {
+                print("game over");
+            }
+        }
     }
 }
