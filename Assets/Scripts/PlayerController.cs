@@ -9,18 +9,23 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float speed = 10f;
+
+    [SerializeField]
+    private float rotationSpeed = 90f;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal") * speed;
+        verticalInput = Input.GetAxis("Vertical") * rotationSpeed;
 
-        transform.Translate(Vector2.right * Time.deltaTime * horizontalInput * speed);
+        transform.Translate(Vector2.right * Time.deltaTime * horizontalInput);
+        transform.Rotate(Vector3.forward, Time.deltaTime * verticalInput);
+
     }
 }

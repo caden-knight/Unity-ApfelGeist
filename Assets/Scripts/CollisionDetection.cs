@@ -6,6 +6,8 @@ public class CollisionDetection : MonoBehaviour
 {
     private int score = 0;
     private int lives = 3;
+    [SerializeField]
+    private GameObject self;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class CollisionDetection : MonoBehaviour
             {
                 lives--;
                 print(lives);
+                // GameObject.Destroy(self);
             }
             else
             {
